@@ -6,7 +6,7 @@ pipeline{
 				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-user']]) {
 					sh '''
 						eksctl create cluster \
-						--name udacitycluster \
+						--name udacityclusternd \
 						--nodegroup-name standard-workers \
 						--node-type t2.small \
 						--nodes 2 \
@@ -24,7 +24,7 @@ pipeline{
 			steps {
 				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-user']]) {
 					sh '''
-						aws eks --region us-west-1 update-kubeconfig --name udacitycluster
+						aws eks --region us-west-1 update-kubeconfig --name udacityclusternd
 					'''
 				}
 			}
