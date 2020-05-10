@@ -12,7 +12,7 @@ pipeline{
 						--nodes 2 \
 						--nodes-min 1 \
 						--nodes-max 3 \
-						--region us-west-1 \
+						--region us-west-2 \
 						--ssh-access \
 						--ssh-public-key my-public-key.pub \
 						--managed
@@ -24,7 +24,7 @@ pipeline{
 			steps {
 				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-user']]) {
 					sh '''
-						aws eks --region us-west-1 update-kubeconfig --name udacityclusternd
+						aws eks --region us-west-2 update-kubeconfig --name udacityclusternd
 					'''
 				}
 			}
